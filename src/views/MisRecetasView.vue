@@ -1,20 +1,31 @@
 <template>
     <v-container>
-        <FormComponent></FormComponent>
+        <MisRecetasComponent></MisRecetasComponent>
     </v-container>
 </template>
   
    
   //<script>
   //import Favoritos from "../components/Favoritos.vue";
-  import FormComponent from "../components/Form.vue";
+  import MisRecetasComponent from "../components/MisRecetas.vue";
 
 
   export default {
-    name: "CargarView",
+    name: "MisRecetasView",
     components: { 
-        FormComponent,
+        MisRecetasComponent
     },
+
+    mounted: function(){ 
+        if(localStorage.postresAgregados){
+            this.postresAgregados = JSON.parse(localStorage.getItem("postresAgregados"));
+
+        } else{	
+            this.sin_datos = "No hay recetas que mostrar :("
+
+        }
+
+    }
   
   };
 

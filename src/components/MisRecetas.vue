@@ -1,58 +1,43 @@
 <template>
   <v-container>
-    <v-row class="text-center">
-      <v-col cols="12">
-        <v-img
-          :src="require('../assets/logo.svg')"
-          class="my-3"
-          contain
-          height="200"
-        />
-      </v-col>
-
-      <v-col class="mb-4">
-        <h1 class="display-2 font-weight-bold mb-3">
-          HOLA MICA
-        </h1>
-
-        <p class="subheading font-weight-regular">
-          For help and collaboration with other Vuetify developers,
-          <br>please join our online
-          <a
-            href="https://community.vuetifyjs.com"
-            target="_blank"
-          >Discord Community</a>
-        </p>
-      </v-col>
-
-      <v-col
-        class="mb-5"
-        cols="12"
-      >
-      </v-col>
-    </v-row>
+      <section data-postres="agregados">
+              <h3>Mis recetas</h3>
+              <div v-if="postresAgregados.length > 0">
+                  <div data-postres="cards">
+                      <div v-for="x of postresAgregados" :key="x.id">
+                      <picture>
+                          <img src="https://img.freepik.com/vector-gratis/deliciosos-postres-pintados-mano_53876-97749.jpg?w=2000" :alt="x.nombre">
+                      </picture>
+                  <div>
+                  <h4>{{x.nombre}}</h4>
+              </div>
+          </div>
+      </div>
+              </div>
+              <p v-else>{{sin_datos}}</p>
+      </section>
   </v-container>
 </template>
 
 <script>
   export default {
-    name: 'HelloWorld',
+    name: 'MisRecetasComponent',
 
-    data: () => ({
-      ecosystem: [
-        {
-          text: 'vuetify-loader',
-          href: 'https://github.com/vuetifyjs/vuetify-loader',
-        },
-        {
-          text: 'github',
-          href: 'https://github.com/vuetifyjs/vuetify',
-        },
-        {
-          text: 'awesome-vuetify',
-          href: 'https://github.com/vuetifyjs/awesome-vuetify',
-        },
-      ],
-    }),
-  }
+  data: () => ({
+      postresAgregados : [],
+      sin_datos : "",
+  
+  }),
+
+  mounted: function(){ 
+      if(localStorage.postresAgregados){
+          this.postresAgregados = JSON.parse(localStorage.getItem("postresAgregados"));
+
+      } else{	
+          this.sin_datos = "No hay recetas que mostrar :("
+
+      }
+
+  },
+}
 </script>
