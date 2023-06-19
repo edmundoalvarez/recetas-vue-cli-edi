@@ -1,94 +1,165 @@
 <template>
-    <v-container>
-      <!-- <v-row class="text-center">
-        <v-col cols="12">
-          <v-img
-            :src="require('../assets/logo.svg')"
-            class="my-3"
-            contain
-            height="200"
-          />
-        </v-col>
-  
-        <v-col class="mb-4">
-          <h1 class="display-2 font-weight-bold mb-3">
-            HOLA MICA
-          </h1>
-  
-          <p class="subheading font-weight-regular">
-            For help and collaboration with other Vuetify developers,
-            <br>please join our online
-            <a
-              href="https://community.vuetifyjs.com"
-              target="_blank"
-            >Discord Community</a>
-          </p>
-        </v-col>
-  
-        <v-col
-          class="mb-5"
-          cols="12"
-        >
-        </v-col>
-      </v-row> -->
-      <section data-postres="form">
-		<h3>Subí tu postre</h3>
-			<form action="#" method="post" enctype="multipart/form-data" v-on:submit.prevent>
+  <div class="container">
+    <h1 class="brown--text">Compartinos tu receta</h1>
+      <v-form ref="form">
+        <v-text-field
+          v-model="form_data.recetaNombre"
+          label="Nombre"
+          counter="20">
+        </v-text-field>
+        <v-textarea
+          label="Receta"
+          v-model="form_data.recetaDescripción"
+          rows="2"
+          row-height="20">
+        </v-textarea>
+        <v-select
+          :items="items"
+          label="Categoría del postre"
+          multiple
+          v-model="form_data.selected">
+        </v-select>
 
-                <div data-form="nombre">
-                  <label for="nombre">Nombre</label>
-                  <input type="text" id="nombre" name="nombre" v-model="form_data.nombre">
-                </div>
 
-                <div data-form="categorias">
-                  <p>Categoría</p>
-                  <div  v-for="item of form_data.categorias" :key="item.id"  data-categorias="categoria">
-                    <input type="checkbox" :name="item.nombre" :value="item.nombre" :id="item.id" @change="agregarCategoria">
-                    <label :for="item.id">{{item.nombre}}</label>
-                  </div>
-                </div>
+        <v-text-field
+          v-model="form_data.origen"
+          label="Origen/Historia">
+        </v-text-field>
 
-                <div data-form="ingredientes">
-                  <label for="ingredientes">Ingredientes</label>
-				  <div data-ingredientes="ingredientes">
-				  	<p v-for="item in form_data.ingredientesCargados" :key="item">{{item}}, </p>
-				  </div>
-                  <input type="text" id="ingredientes" name="ingredientes" v-model="form_data.ingrediente">
-                  <button @click="agregarIngrediente()" type="button">Agregar</button>
-                </div>
+      <div class="guardar">
+        <v-btn rounded color="amber" dark @click="guardar(form_data)">
+          Guardar
+        </v-btn>
+      </div>
+    </v-form>
 
-				<div data-form="imagen">
-					<label for="img">Imagen:</label>
-					<input @change="cargaImg" type="file" id="img" name="img" accept="image/png, image/jpeg">
-				</div>
-
-                <div data-form="receta">
-                  <label for="receta">Receta</label>
-                  <textarea v-model="form_data.receta" name="receta" id="receta"></textarea>
-                </div>
-
-                <div data-form="origen">
-                  <label for="origen">Origen/historia</label>
-                  <textarea v-model="form_data.historia" name="origen" id="origen"></textarea>
-                </div>
-				<div data-form="cargar-postre">
-					<button @click="agregarPostre(form_data)" type="submit"> Cargar postre</button>
-				</div>
-			</form>
-
-			<div data-form="errores" v-if="form_data.enviado === true">
-				<div v-if="erroresForm">
-					<ol data-poste="errores">
-						<li v-for="x in form_data.errores" :key="x.id">{{x}}</li>
-					</ol>
-				</div>
-				<div v-else>
-					<p data-poste="cargado">Postre cargado correctamente</p>
-				</div>
- 			</div>
-		</section>
-    </v-container>
+    <div>
+      <div v-if="control === true">
+        <div v-if="cantidadErrores" :class="muestraError">
+          <ul>
+            <li v-for="x in errores" :key="x">{{ x }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
   </template>
+
+
+
+<script>
+export default {
+  name: "IngresarReceta",
+
+  data: function () {
+    return {
+      form_data: {
+        recetaNombre: "",
+        recetaDescripción: "",
+        selected: [],
+        origen: "",
+        id: "",
+      },
+      items: ["Chocolate", "Vainilla", "Crema", "Fruta", "Otro"],
+      errores: [],
+      datosForm: [],
+      control: false,
+      muestraError: "pink mt-5 space--text",
+      hoy: new Date(),
+    };
+  },
+
+  computed: {
+    cantidadErrores: function () {
+      return this.errores.length; // Devuelve cantidad errores
+    },
+  },
+
+  methods: {
+    guardar: function (form_data) {
+      console.log(form_data.selected);
+
+      this.control = true; //queremos evaluar que los mensajes se muestren solo cuando se ejecute la funcion
+      this.errores = []; //vaciamos el array de errores
+
+      console.log(this.contacto);
+
+      if (!this.form_data.recetaNombre) {
+        console.log(!this.form_data.recetaNombre);
+        this.errores.push("El nombre es obligatorio.");
+      }
+
+      if (this.form_data.recetaNombre && this.form_data.recetaNombre.length < 5) {
+        this.errores.push("El nombre de la receta debe tener más de 5 caracteres.");
+      }
+
+      if (!this.form_data.recetaDescripción) {
+        this.errores.push("La descriçión de la receta no puede estar vacía.");
+      }
+
+      console.log(form_data.selected);
+
+      if (form_data.selected.length === 0) {
+        this.errores.push("Debe seleccionar una categoría.");
+      }
+
+      if (!form_data.origen) {
+        this.errores.push("El origen o historia de tu receta no puede estar vacía.");
+      }
+
+      if (this.errores.length == 0) {
+        form_data = Object.assign({}, form_data, { id: new Date().getTime() });
+        console.log(form_data);
+
+        if (!localStorage.form) {
+          this.datosForm = [];
+        } else {
+          this.datosForm = JSON.parse(localStorage.getItem("form"));
+        }
+
+        this.datosForm.push(form_data);
+        localStorage.setItem("form", JSON.stringify(this.datosForm));
+        this.$router.push("/recetaDescripciónsguardadas");
+      }
+    },
+  },
+};
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <!--
   
   <script>
     export default {
@@ -211,5 +282,5 @@
 		}
 	}
 }
-</script>
+</script>-->
   
