@@ -6,9 +6,7 @@
   
    
   //<script>
-  //import Favoritos from "../components/Favoritos.vue";
   import MisRecetasComponent from "../components/MisRecetas.vue";
-
 
   export default {
     name: "MisRecetasView",
@@ -17,13 +15,13 @@
     },
 
     mounted: function(){ 
-        if(localStorage.postresAgregados){
-            this.postresAgregados = JSON.parse(localStorage.getItem("postresAgregados"));
+      if(localStorage.form){
+        this.datosForm = JSON.parse(localStorage.getItem("form"));
 
-        } else{	
-            this.sin_datos = "No hay recetas que mostrar :("
+      } else{	
+        this.sin_datos = "No hay recetas que mostrar :("
 
-        }
+      }
 
     }
   
@@ -38,6 +36,24 @@
   h3 {
     margin-top: 40px !important;
     font-size: 2em;
+  }
+  .fav::after{
+    content: " ";
+    width: 25px;
+    height: 25px;
+    display: inline-block;
+    background-image: url(../assets/fav.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  .no-fav::after{
+    content: " ";
+    width: 25px;
+    height: 25px;
+    display: inline-block;
+    background-image: url(../assets/no-fav.svg);
+    background-position: center;
+    background-repeat: no-repeat;
   }
   [data-postres="form"]{
     display: flex;
@@ -227,12 +243,12 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     align-content: center;
     gap: 20px;}
 
 [data-postres="cards"] > div{
-    width: 500px;
+    width: 700px;
     height: 150px;
     background-color: white;
     box-shadow: 1px 2px 9px 0px rgba(0,0,0,0.35);

@@ -1,58 +1,101 @@
 <template>
-  <v-container>
-    <v-row class="text-center">
-      <v-col cols="12">
-        <v-img
-          :src="require('../assets/logo.svg')"
-          class="my-3"
-          contain
-          height="200"
-        />
-      </v-col>
-
-      <v-col class="mb-4">
-        <h1 class="display-2 font-weight-bold mb-3">
-          HOLA MICA
-        </h1>
-
-        <p class="subheading font-weight-regular">
-          For help and collaboration with other Vuetify developers,
-          <br>please join our online
-          <a
-            href="https://community.vuetifyjs.com"
-            target="_blank"
-          >Discord Community</a>
-        </p>
-      </v-col>
-
-      <v-col
-        class="mb-5"
-        cols="12"
-      >
-      </v-col>
-    </v-row>
-  </v-container>
+  <v-btn rounded color="amber" dark @click="guardar(recetaCargada)">Agregar a favoritos</v-btn>
 </template>
 
 <script>
-  export default {
-    name: 'HelloWorld',
+export default {
+  name: "FavoritosComponent",
 
-    data: () => ({
-      ecosystem: [
-        {
-          text: 'vuetify-loader',
-          href: 'https://github.com/vuetifyjs/vuetify-loader',
-        },
-        {
-          text: 'github',
-          href: 'https://github.com/vuetifyjs/vuetify',
-        },
-        {
-          text: 'awesome-vuetify',
-          href: 'https://github.com/vuetifyjs/awesome-vuetify',
-        },
-      ],
-    }),
-  }
+  data: function () {
+    return {
+      favoritos : [],
+      recetaCargada : null,
+      datosForm : []
+
+    };
+  },
+
+  props:["x"],
+  
+  methods: {
+    guardar: function () {
+      
+      this.recetaCargada = this.x;
+      //console.log(this.recetaCargada.id);
+    
+      if (!localStorage.favoritos) {
+        this.favoritos = [];
+        
+      } else {
+        this.favoritos = JSON.parse(localStorage.getItem("favoritos"));
+         
+      }
+    
+      if (!localStorage.form) {
+        this.datosForm = [];
+        
+      } else {
+        this.datosForm = JSON.parse(localStorage.getItem("form"));
+         
+      }
+
+      this.recetaCargada.fav == false ? this.recetaCargada.fav = true : this.recetaCargada.fav = false;
+
+      for (const dato of this.datosForm) {
+        if(this.recetaCargada.id == dato.id){
+          dato.fav = this.recetaCargada.fav;
+        }
+        
+      }
+      
+      if(this.recetaCargada.fav == true){
+
+        if(this.favoritos.length > 0){
+
+          for (const f of this.favoritos) {
+
+            //console.log(f);
+            if(this.recetaCargada.id != f.id){
+              this.favoritos.push(this.recetaCargada);
+
+            }
+
+          }
+        } else {
+          this.favoritos.push(this.recetaCargada);
+
+        } 
+
+      } else {
+
+        if(this.favoritos.length > 0){
+
+          for (const f of this.favoritos) {
+
+            //console.log(f);
+            if(this.recetaCargada.id == f.id){
+              this.favoritos.pop(f.id);
+
+            }
+
+          }
+        } 
+
+      } 
+
+      localStorage.setItem("favoritos", JSON.stringify(this.favoritos));
+      localStorage.setItem("form", JSON.stringify(this.datosForm));
+
+      console.log("Favoritos: ", this.favoritos);
+      console.log("Recetas: ", this.datosForm);
+    },
+
+    mounted: function (){
+      if(localStorage.favoritos){
+          this.favoritos = JSON.parse(localStorage.getItem("favoritos"));
+
+      }
+    }
+  },
+}
 </script>

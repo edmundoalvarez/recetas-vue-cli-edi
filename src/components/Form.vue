@@ -59,6 +59,7 @@ export default {
         selected: [],
         origen: "",
         id: "",
+        fav: false,
       },
       items: ["Chocolate", "Vainilla", "Crema", "Fruta", "Otro"],
       errores: [],
@@ -119,7 +120,8 @@ export default {
 
         this.datosForm.push(form_data);
         localStorage.setItem("form", JSON.stringify(this.datosForm));
-        this.$router.push("/recetaDescripciónsguardadas");
+        //this.$router.push("/recetaDescripciónsguardadas");
+        this.$router.push("/recetasguardadas");
       }
     },
   },
