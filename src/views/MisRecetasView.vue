@@ -39,8 +39,8 @@
   }
   .fav::after{
     content: " ";
-    width: 25px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
     display: inline-block;
     background-image: url(../assets/fav.svg);
     background-position: center;
@@ -48,8 +48,8 @@
   }
   .no-fav::after{
     content: " ";
-    width: 25px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
     display: inline-block;
     background-image: url(../assets/no-fav.svg);
     background-position: center;

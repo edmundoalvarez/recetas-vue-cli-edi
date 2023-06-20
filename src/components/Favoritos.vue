@@ -1,5 +1,6 @@
 <template>
-  <v-btn rounded color="amber" dark @click="guardar(recetaCargada)">Agregar a favoritos</v-btn>
+  <v-btn rounded color="amber" dark @click="guardar(recetaCargada)" v-if="this.recetaCargada.fav == true">Quitar de favoritos</v-btn>
+  <v-btn rounded color="amber" dark @click="guardar(recetaCargada)" v-else-if="this.recetaCargada.fav == false">Agregar a favoritos</v-btn>
 </template>
 
 <script>
@@ -9,18 +10,17 @@ export default {
   data: function () {
     return {
       favoritos : [],
-      recetaCargada : null,
+      recetaCargada : this.x,
       datosForm : []
 
     };
   },
 
   props:["x"],
-  
+
   methods: {
     guardar: function () {
       
-      this.recetaCargada = this.x;
       //console.log(this.recetaCargada.id);
     
       if (!localStorage.favoritos) {
