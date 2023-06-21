@@ -64,7 +64,6 @@
     methods: {
     recetasLocal: function() {
       
-      
       if (localStorage.form) {
         this.datosForm = JSON.parse(localStorage.getItem("form"));
 
