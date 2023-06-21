@@ -9,7 +9,7 @@
         </v-text-field>
         <v-textarea
           label="Receta"
-          v-model="form_data.recetaDescripción"
+          v-model="form_data.recetaDescripcion"
           rows="2"
           row-height="20">
         </v-textarea>
@@ -55,7 +55,7 @@ export default {
     return {
       form_data: {
         recetaNombre: "",
-        recetaDescripción: "",
+        recetaDescripcion: "",
         selected: [],
         origen: "",
         id: "",
@@ -94,7 +94,7 @@ export default {
         this.errores.push("El nombre de la receta debe tener más de 5 caracteres.");
       }
 
-      if (!this.form_data.recetaDescripción) {
+      if (!this.form_data.recetaDescripcion) {
         this.errores.push("La descriçión de la receta no puede estar vacía.");
       }
 
@@ -120,7 +120,7 @@ export default {
 
         this.datosForm.push(form_data);
         localStorage.setItem("form", JSON.stringify(this.datosForm));
-        //this.$router.push("/recetaDescripciónsguardadas");
+        //this.$router.push("/recetaDescripcionsguardadas");
         this.$router.push("/recetasguardadas");
       }
     },

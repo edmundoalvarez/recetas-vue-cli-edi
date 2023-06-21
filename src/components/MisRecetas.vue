@@ -13,8 +13,8 @@
                             <h4 :class="x.fav == true ? 'fav' : 'no-fav'" >{{x.recetaNombre}}</h4>
                         </v-card-title>
                         <v-card-actions>
-                            <FavoritosComponent :x="x">Agregar a favoritos</FavoritosComponent>
-                            <v-btn rounded color="brown" dark>Ver detalles</v-btn>
+                            <FavoritosComponent :x="x"></FavoritosComponent>
+                            <v-btn rounded color="brown" dark :x="x" :to="'/recetas/' + x.id" > Ver Detalle </v-btn>
                         </v-card-actions>
                     </div>
                 </v-card>
@@ -27,12 +27,14 @@
 
 <script>
   import FavoritosComponent from "../components/Favoritos.vue";
+  //import RecetaDetalleComponent from "../components/RecetaDetalle.vue";
 
   export default {
     name: 'MisRecetasComponent',
 
     components: { 
-        FavoritosComponent
+        FavoritosComponent,
+        //RecetaDetalleComponent
     },
 
 
