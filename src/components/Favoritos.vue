@@ -1,6 +1,6 @@
 <template>
-  <v-btn rounded color="amber" dark @click="guardar(recetaCargada)" v-if="this.recetaCargada.fav == true">Quitar de favoritos</v-btn>
-  <v-btn rounded color="amber" dark @click="guardar(recetaCargada)" v-else-if="this.recetaCargada.fav == false">Agregar a favoritos</v-btn>
+  <v-btn rounded color="amber" dark @click="guardar(recetaCargada)" v-if="this.recetaCargada.fav == true">Quitar de fav</v-btn>
+  <v-btn rounded color="amber" dark @click="guardar(recetaCargada)" v-else-if="this.recetaCargada.fav == false">Agregar a fav</v-btn>
 </template>
 
 <script>

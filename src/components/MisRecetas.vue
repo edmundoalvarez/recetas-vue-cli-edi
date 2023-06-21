@@ -1,61 +1,108 @@
 <template>
-  <v-container>
-    <section data-postres="agregados">
-        <h3>Mis recetas</h3>
-        <div v-if="datosForm.length > 0">
-            <div data-postres="cards">
-                <v-card v-for="x of datosForm" :key="x.id">
-                    <picture>
-                        <img src="https://img.freepik.com/vector-gratis/deliciosos-postres-pintados-mano_53876-97749.jpg?w=2000" :alt="x.nombre">
-                    </picture>
-                    <div>
-                        <v-card-title>
-                            <h4 :class="x.fav == true ? 'fav' : 'no-fav'" >{{x.recetaNombre}}</h4>
-                        </v-card-title>
-                        <v-card-actions>
-                            <FavoritosComponent :x="x"></FavoritosComponent>
-                            <v-btn rounded color="brown" dark :x="x" :to="'/recetas/' + x.id" > Ver Detalle </v-btn>
-                        </v-card-actions>
+    <v-row>
+        <v-col cols="12">
+            <v-container>
+                <section data-postres="agregados">
+                    <h3>Mis recetas</h3>
+                    <div v-if="datosForm.length > 0">
+                        <div data-postres="cards">
+                            <v-card v-for="x of datosForm" :key="x.id" width="600px" class="mx-auto my-12">
+                                <picture>
+                                    <img src="https://img.freepik.com/vector-gratis/deliciosos-postres-pintados-mano_53876-97749.jpg?w=2000" :alt="x.nombre" height="300px" width="600px">
+                                </picture>
+                                <div>
+                                    <v-card-title>
+                                        <h4 :class="x.fav == true ? 'fav' : 'no-fav'" >{{x.recetaNombre}}</h4>
+                                    </v-card-title>
+
+                                    <v-card-text class="d-block">Descripción: {{x.recetaDescripción}}</v-card-text>
+                                    <v-card-text class="d-block">Categoria: {{x.selected}}</v-card-text>
+                                    <v-card-text class="d-block">Origen: {{x.origen}}</v-card-text>
+                                
+                                    <v-card-actions>
+                                        <FavoritosComponent :x="x">Agregar a favoritos</FavoritosComponent>
+                                        <v-btn rounded color="brown" dark>Editar</v-btn>
+
+
+
+                                        <v-btn
+                  depressed
+                  class="space--text m-3"
+                  color="pink"
+                  :key="x.id"
+                  @click="borrar(x)"
+                  >Borrar prueba
+                </v-btn>
+                                    </v-card-actions>
+                                </div>
+                            </v-card>
+                        </div>
                     </div>
-                </v-card>
-            </div>
-        </div>
-        <p v-else>{{sin_datos}}</p>
-    </section>
-  </v-container>
+                    <p v-else>{{sin_datos}}</p>
+                </section>
+            </v-container>
+        </v-col>
+    </v-row>
 </template>
 
 <script>
-  import FavoritosComponent from "../components/Favoritos.vue";
-  //import RecetaDetalleComponent from "../components/RecetaDetalle.vue";
+ import FavoritosComponent from "../components/Favoritos.vue";
 
   export default {
     name: 'MisRecetasComponent',
 
     components: { 
-        FavoritosComponent,
-        //RecetaDetalleComponent
+        FavoritosComponent
     },
 
 
     data: () => ({
         datosForm : [],
         sin_datos : "",
+        selection: 1,
+
     
     }),
+    mounted() {
+  this.recetasLocal();
+},
 
-    mounted: function(){ 
-        if(localStorage.form){
-            this.datosForm = JSON.parse(localStorage.getItem("form"));
+methods: {
+  recetasLocal() {
+    if (localStorage.form) {
+      this.datosForm = JSON.parse(localStorage.getItem("form"));
 
-        } else{	
-            this.sin_datos = "No hay recetas que mostrar :("
-
-        }
-
-    },
-
+    } else{	
+      this.sin_datos = "No hay recetas que mostrar :("
 
   }
+
+},
+
+borrar(x) {
+  this.datosForm = JSON.parse(localStorage.getItem("form"));
+
+  for (var i = 0; i < this.datosForm.length; i++) {
+    if (this.datosForm[i].id == x.id) {
+      var rta = confirm(
+        "Confirmación de borrado de la frase de:  " + this.datosForm[i].recetaNombre
+      );
+      if (rta == true) {
+        this.datosForm.splice(i, 1);
+      }
+    }
+  }
+
+  localStorage.setItem("form", JSON.stringify(this.datosForm));
+
+  this.recetasLocal();
+},
+
+}
+
+};
+
   
 </script>
+
+

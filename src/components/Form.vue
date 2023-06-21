@@ -2,24 +2,26 @@
   <div class="container">
     <h1 class="brown--text">Compartinos tu receta</h1>
       <v-form ref="form">
+
         <v-text-field
           v-model="form_data.recetaNombre"
           label="Nombre"
           counter="20">
         </v-text-field>
+
         <v-textarea
           label="Receta"
-          v-model="form_data.recetaDescripcion"
+          v-model="form_data.recetaDescripción"
           rows="2"
           row-height="20">
         </v-textarea>
+
         <v-select
           :items="items"
           label="Categoría del postre"
           multiple
           v-model="form_data.selected">
         </v-select>
-
 
         <v-text-field
           v-model="form_data.origen"
@@ -45,8 +47,6 @@
   </div>
   </template>
 
-
-
 <script>
 export default {
   name: "IngresarReceta",
@@ -55,11 +55,10 @@ export default {
     return {
       form_data: {
         recetaNombre: "",
-        recetaDescripcion: "",
+        recetaDescripción: "",
         selected: [],
         origen: "",
         id: "",
-        fav: false,
       },
       items: ["Chocolate", "Vainilla", "Crema", "Fruta", "Otro"],
       errores: [],
@@ -72,7 +71,7 @@ export default {
 
   computed: {
     cantidadErrores: function () {
-      return this.errores.length; // Devuelve cantidad errores
+      return this.errores.length; // Devolvemos la de cantidad errores
     },
   },
 
@@ -80,7 +79,7 @@ export default {
     guardar: function (form_data) {
       console.log(form_data.selected);
 
-      this.control = true; //queremos evaluar que los mensajes se muestren solo cuando se ejecute la funcion
+      this.control = true; //evaluamos que los mensajes se ejecuten sólo cuando se ejecute la función
       this.errores = []; //vaciamos el array de errores
 
       console.log(this.contacto);
@@ -94,7 +93,7 @@ export default {
         this.errores.push("El nombre de la receta debe tener más de 5 caracteres.");
       }
 
-      if (!this.form_data.recetaDescripcion) {
+      if (!this.form_data.recetaDescripción) {
         this.errores.push("La descriçión de la receta no puede estar vacía.");
       }
 
@@ -117,11 +116,10 @@ export default {
         } else {
           this.datosForm = JSON.parse(localStorage.getItem("form"));
         }
-
+        
         this.datosForm.push(form_data);
         localStorage.setItem("form", JSON.stringify(this.datosForm));
-        //this.$router.push("/recetaDescripcionsguardadas");
-        this.$router.push("/recetasguardadas");
+        this.$router.push("/recetaDescripciónsguardadas");
       }
     },
   },

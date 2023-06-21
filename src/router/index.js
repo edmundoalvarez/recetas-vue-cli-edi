@@ -3,7 +3,6 @@ import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import CargarView from '../views/CargarView.vue'
 import MisRecetasView from '../views/MisRecetasView.vue'
-import RecetaDetalleView from '../views/RecetaDetalleView.vue'
 
 Vue.use(VueRouter)
 
@@ -22,11 +21,6 @@ const routes = [
     path: '/recetasguardadas',
     name: 'recetasguardadas',
     component: MisRecetasView
-  },
-  {
-    path: '/recetas/:id/',
-    name: 'recetasdetalle',
-    component: RecetaDetalleView
   },
   {
     path: '/about',
