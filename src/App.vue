@@ -53,6 +53,7 @@
 export default {
   name: "App",
   data: () => ({
+    datosForm: [],
     icons: ["mdi-facebook", "mdi-twitter", "mdi-instagram", "mdi-youtube", "mdi-linkedin"],
     items: [
       {
@@ -73,6 +74,17 @@ export default {
     ],
     drawer: null,
   }),
+
+  mounted(){
+    fetch("https://recetasadm2023.000webhostapp.com/api/api.php")
+    .then(response => response.json())
+    .then(response => {
+      this.datosForm = response;
+      console.log(response);
+      localStorage.setItem("form", JSON.stringify(this.datosForm));
+    })
+    .catch( err => console.error("Problemas acá: ",err));
+  }
 };
 </script>
 

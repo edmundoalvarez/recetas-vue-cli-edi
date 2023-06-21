@@ -8,7 +8,7 @@
                         <div data-postres="cards">
                             <v-card v-for="x of datosForm" :key="x.id" width="600px" class="mx-auto my-12">
                                 <picture>
-                                    <img src="https://img.freepik.com/vector-gratis/deliciosos-postres-pintados-mano_53876-97749.jpg?w=2000" :alt="x.nombre" height="300px" width="600px">
+                                    <img src="https://img.freepik.com/vector-gratis/deliciosos-postres-pintados-mano_53876-97749.jpg?w=200" v-bind:alt="x.recetaNombre" height="300px" width="600px">
                                 </picture>
                                 <div class="title">
                                     <v-card-title>
@@ -60,43 +60,46 @@
 
     
     }),
-    mounted() {
-  this.recetasLocal();
-},
 
-methods: {
-  recetasLocal() {
-    if (localStorage.form) {
-      this.datosForm = JSON.parse(localStorage.getItem("form"));
+    methods: {
+    recetasLocal: function() {
+      
+      
+      if (localStorage.form) {
+        this.datosForm = JSON.parse(localStorage.getItem("form"));
 
-    } else{	
-      this.sin_datos = "No hay recetas que mostrar :("
+      } else{	
+        this.sin_datos = "No hay recetas que mostrar :("
 
-  }
+      }
 
-},
+    },
 
-borrar(x) {
-  this.datosForm = JSON.parse(localStorage.getItem("form"));
+    borrar(x) {
+    this.datosForm = JSON.parse(localStorage.getItem("form"));
 
-  for (var i = 0; i < this.datosForm.length; i++) {
-    if (this.datosForm[i].id == x.id) {
-      var rta = confirm(
-        "Confirmación de borrado de la frase de:  " + this.datosForm[i].recetaNombre
-      );
-      if (rta == true) {
-        this.datosForm.splice(i, 1);
-        //console.log(this.datosForm.length);
+    for (var i = 0; i < this.datosForm.length; i++) {
+      if (this.datosForm[i].id == x.id) {
+        var rta = confirm(
+          "Confirmación de borrado de la frase de:  " + this.datosForm[i].recetaNombre
+        );
+        if (rta == true) {
+          this.datosForm.splice(i, 1);
+          //console.log(this.datosForm.length);
+        }
       }
     }
+
+    localStorage.setItem("form", JSON.stringify(this.datosForm));
+
+    this.recetasLocal();
+    },
+
+  },
+
+  mounted: function() {
+      this.recetasLocal();
   }
-
-  localStorage.setItem("form", JSON.stringify(this.datosForm));
-
-  this.recetasLocal();
-},
-
-}
 
 };
 
