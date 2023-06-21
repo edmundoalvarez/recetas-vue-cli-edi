@@ -53,7 +53,7 @@ export default {
 <style scope>
 .introduccion{
   padding: 20px;
-  background-color: rgb(92, 54, 22);
+  background-color: rgba(206, 170, 112, 0.8);
 }
 .introduccion > div{
   width: 80%;
