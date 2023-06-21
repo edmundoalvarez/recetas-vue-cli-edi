@@ -83,7 +83,7 @@ export default {
       console.log(response);
       localStorage.setItem("form", JSON.stringify(this.datosForm));
     })
-    .catch( err => console.error("Problemas acá: ",err));
+    .catch( err => console.log("Problemas acá: ",err));
   }
 };
 </script>

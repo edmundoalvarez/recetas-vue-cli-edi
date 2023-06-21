@@ -8,12 +8,17 @@
         class="p-0 m-0">
       </v-carousel-item>
     </v-carousel>
-    <div class="introduccion">
-      <div>
-        <h2>¡Bienvenidos a "tu postre favorito"!</h2>
-        <p>Estás listo para conocer a la base de datos de recetas de postres más grande del mundo, en donde los usuarios agregan sus recetas favoritas y todos los meses publicamos las 4 favoritas de nuestros usuarios?. Quiénes serán los ganadores de este mes?</p>
-      </div>
-    </div>
+    <v-container class="introduccion">
+      <v-card>
+        <h2>¡Bienvenidos a "Tu Postre Favorito"!</h2>
+        <p>¿Estás listo para conocer tu anotador de postres favoritos?. En esta app podrás llevar un registro de tus recetas que estará disponible en todo momento. Además, podrás indicar el origen de la misma por lo que siempre recordarás donde la aprendiste o quien fue el creador.</p>
+        <p>¡No esperes más y cargá tu primera receta o chequeá las que ya cargaste!</p>
+        <v-card-actions >
+          <v-btn :to="'/cargar'" rounded color="brown" dark>Cargá nueva receta</v-btn>
+          <v-btn :to="'/recetasguardadas'" rounded color="amber" dark>Ver recetas cargadas</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-container>
   </div>
 </template>
 
@@ -47,13 +52,19 @@ export default {
 </script>
 <style scope>
 .introduccion{
-  background: rgba(90, 40, 9, 0.9);
   padding: 20px;
+  background-color: rgb(92, 54, 22);
 }
 .introduccion > div{
   width: 80%;
   margin: 60px auto;
-  color: white;
+  color: rgb(21, 21, 21);
   padding:20px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+p {
+  margin: 0px !important;
 }
 </style>
