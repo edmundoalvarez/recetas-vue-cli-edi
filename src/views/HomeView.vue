@@ -10,7 +10,7 @@
     </v-carousel>
     <v-container class="introduccion">
       <v-card>
-        <h2>¡Bienvenidos a "Tu Postre Favorito"!</h2>
+        <h1 class="brown--text">¡Bienvenidos a "Tu Postre Favorito"!</h1>
         <p>¿Estás listo para conocer tu anotador de postres favoritos?. En esta app podrás llevar un registro de tus recetas que estará disponible en todo momento. Además, podrás indicar el origen de la misma por lo que siempre recordarás donde la aprendiste o quien fue el creador.</p>
         <p>¡No esperes más y cargá tu primera receta o chequeá las que ya cargaste!</p>
         <v-card-actions >

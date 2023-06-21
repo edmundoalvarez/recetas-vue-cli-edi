@@ -3,7 +3,7 @@
         <v-col cols="12">
             <v-container>
                 <section data-postres="agregados">
-                    <h3>Mis recetas</h3>
+                    <h1 class="brown--text">Mis recetas</h1>
                     <div v-if="datosForm.length > 0">
                         <div data-postres="cards">
                             <v-card v-for="x of datosForm" :key="x.id" width="600px" class="mx-auto my-12">
