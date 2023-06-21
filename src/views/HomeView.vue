@@ -54,6 +54,8 @@ export default {
 .introduccion{
   padding: 20px;
   background-color: rgba(206, 170, 112, 0.8);
+  margin: 0px;
+  max-width: 100%;
 }
 .introduccion > div{
   width: 80%;
