@@ -16,19 +16,19 @@
                                     </v-card-title>
 
                                     <v-card-text class="d-block">Descripción: {{x.recetaDescripcion}}</v-card-text>
-                                    <v-card-text class="d-block">Categoria: {{x.selected}}</v-card-text>
+                                    <v-card-text v-for="(s, i) in x.selected" class="d-block" :key="s[i].id">Categoria: {{s}}</v-card-text>
                                     <v-card-text class="d-block">Origen: {{x.origen}}</v-card-text>
                                 
                                     <v-card-actions>
                                         <FavoritosComponent :x="x">Agregar a favoritos</FavoritosComponent>
                                         <v-btn rounded color="brown" dark :to="'/editar/' + x.id" :x="x">Editar</v-btn>
                                         <v-btn
-                                          depressed
+                                          rounded
                                           class="space--text m-3"
-                                          color="pink"
+                                          color="red"
                                           :key="x.id"
                                           @click="borrar(x)"
-                                          >Borrar prueba
+                                          >Borrar
                                         </v-btn>
                                     </v-card-actions>
                                 </div>
