@@ -87,7 +87,7 @@ export default {
       localStorage.setItem("form", JSON.stringify(this.datosForm));
 
       console.log("Favoritos: ", this.favoritos);
-      console.log("Recetas: ", this.datosForm);
+      //console.log("Recetas: ", this.datosForm);
     },
 
     mounted: function (){

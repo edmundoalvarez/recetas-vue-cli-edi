@@ -15,24 +15,21 @@
                                         <h4 :class="x.fav == true ? 'fav' : 'no-fav'" >{{x.recetaNombre}}</h4>
                                     </v-card-title>
 
-                                    <v-card-text class="d-block">Descripción: {{x.recetaDescripción}}</v-card-text>
+                                    <v-card-text class="d-block">Descripción: {{x.recetaDescripcion}}</v-card-text>
                                     <v-card-text class="d-block">Categoria: {{x.selected}}</v-card-text>
                                     <v-card-text class="d-block">Origen: {{x.origen}}</v-card-text>
                                 
                                     <v-card-actions>
                                         <FavoritosComponent :x="x">Agregar a favoritos</FavoritosComponent>
                                         <v-btn rounded color="brown" dark>Editar</v-btn>
-
-
-
                                         <v-btn
-                  depressed
-                  class="space--text m-3"
-                  color="pink"
-                  :key="x.id"
-                  @click="borrar(x)"
-                  >Borrar prueba
-                </v-btn>
+                                          depressed
+                                          class="space--text m-3"
+                                          color="pink"
+                                          :key="x.id"
+                                          @click="borrar(x)"
+                                          >Borrar prueba
+                                        </v-btn>
                                     </v-card-actions>
                                 </div>
                             </v-card>
