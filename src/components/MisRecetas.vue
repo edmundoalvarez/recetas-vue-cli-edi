@@ -21,7 +21,7 @@
                                 
                                     <v-card-actions>
                                         <FavoritosComponent :x="x">Agregar a favoritos</FavoritosComponent>
-                                        <v-btn rounded color="brown" dark>Editar</v-btn>
+                                        <v-btn rounded color="brown" dark :to="'/editar/' + x.id" :x="x">Editar</v-btn>
                                         <v-btn
                                           depressed
                                           class="space--text m-3"
@@ -49,7 +49,7 @@
     name: 'MisRecetasComponent',
 
     components: { 
-        FavoritosComponent
+        FavoritosComponent,
     },
 
 
@@ -86,6 +86,7 @@ borrar(x) {
       );
       if (rta == true) {
         this.datosForm.splice(i, 1);
+        //console.log(this.datosForm.length);
       }
     }
   }
