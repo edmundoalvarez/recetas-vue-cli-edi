@@ -10,7 +10,7 @@
                                 <picture>
                                     <img src="https://img.freepik.com/vector-gratis/deliciosos-postres-pintados-mano_53876-97749.jpg?w=2000" :alt="x.nombre" height="300px" width="600px">
                                 </picture>
-                                <div>
+                                <div class="title">
                                     <v-card-title>
                                         <h4 :class="x.fav == true ? 'fav' : 'no-fav'" >{{x.recetaNombre}}</h4>
                                     </v-card-title>
