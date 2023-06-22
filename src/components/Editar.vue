@@ -60,6 +60,8 @@
           recetasCargadas : [],
           items: ["Chocolate", "Vainilla", "Crema", "Fruta", "Otro"],
           control: false,
+          errores: [],
+          muestraError: "pink mt-5 space--text",
 
         };
       },
