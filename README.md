@@ -12,7 +12,7 @@ Aplicación que le brinda al usuario la posibilidad de guardar y compartir sus r
 
 ## 🔨 Funcionalidades del proyecto
 
-- Poseer un formulario para que el usuario pueda ingresar una receta, editarla o borrarla.
+- Posee un formulario para que el usuario pueda ingresar una receta, editarla o borrarla.
   
 - Utiliza iteración de elementos con v-for para representar datos.
 - Establece condicionales por medio de v-if ( v-else-if, else).
