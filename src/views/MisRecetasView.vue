@@ -66,5 +66,7 @@ h4{
     padding: 3px 6px;
     margin-right: 3px;
     border-radius: 30px;
+    font-size: 0.8em;
+    font-weight: 700;
   }
 </style>
