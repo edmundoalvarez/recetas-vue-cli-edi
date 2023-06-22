@@ -60,4 +60,11 @@ h4{
     background-repeat: no-repeat;
 
   }
+  .cat {
+    background-color: rgb(111, 84, 68);
+    color: white;
+    padding: 3px 6px;
+    margin-right: 3px;
+    border-radius: 30px;
+  }
 </style>

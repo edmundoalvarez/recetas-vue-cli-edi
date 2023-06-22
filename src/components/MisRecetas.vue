@@ -16,7 +16,7 @@
                                     </v-card-title>
 
                                     <v-card-text class="d-block">Descripción: {{x.recetaDescripcion}}</v-card-text>
-                                    <v-card-text class="d-block">Categoria: <span v-for="(s, i) in x.selected" :key="s[i].id">{{s}} </span></v-card-text>
+                                    <v-card-text class="d-block">Categoria: <span class="cat" v-for="(s, i) in x.selected" :key="s[i].id">{{s}} </span></v-card-text>
                                     <v-card-text class="d-block">Origen: {{x.origen}}</v-card-text>
                                 
                                     <v-card-actions>
