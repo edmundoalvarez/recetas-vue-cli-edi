@@ -24,11 +24,9 @@
 
  
 //<script>
-//import Favoritos from "../components/Favoritos.vue";
 
 export default {
   name: "HomeView",
-  //components: { Favoritos },
 
   data: () => ({
     items: [

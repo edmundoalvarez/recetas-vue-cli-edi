@@ -84,7 +84,6 @@
         );
         if (rta == true) {
           this.datosForm.splice(i, 1);
-          //console.log(this.datosForm.length);
         }
       }
     }

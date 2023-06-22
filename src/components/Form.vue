@@ -79,15 +79,11 @@ export default {
 
   methods: {
     guardar: function (form_data) {
-      //(form_data.selected);
 
       this.control = true; //evaluamos que los mensajes se ejecuten sólo cuando se ejecute la función
       this.errores = []; //vaciamos el array de errores
 
-      //console.log(this.contacto);
-
       if (!this.form_data.recetaNombre) {
-        //console.log(!this.form_data.recetaNombre);
         this.errores.push("El nombre es obligatorio.");
       }
 
@@ -99,8 +95,6 @@ export default {
         this.errores.push("La descriçión de la receta no puede estar vacía.");
       }
 
-      //(form_data.selected);
-
       if (form_data.selected.length === 0) {
         this.errores.push("Debe seleccionar una categoría.");
       }
@@ -111,7 +105,6 @@ export default {
 
       if (this.errores.length == 0) {
         form_data = Object.assign({}, form_data, { id: new Date().getTime() });
-        //console.log(form_data);
 
         if (!localStorage.form) {
           this.datosForm = [];

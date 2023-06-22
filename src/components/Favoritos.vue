@@ -54,7 +54,6 @@ export default {
 
           for (const f of this.favoritos) {
 
-            //console.log(f);
             if(this.recetaCargada.id != f.id){
               this.favoritos.push(this.recetaCargada);
 
@@ -72,7 +71,6 @@ export default {
 
           for (const f of this.favoritos) {
 
-            //console.log(f);
             if(this.recetaCargada.id == f.id){
               this.favoritos.pop(f.id);
 
@@ -85,9 +83,6 @@ export default {
 
       localStorage.setItem("favoritos", JSON.stringify(this.favoritos));
       localStorage.setItem("form", JSON.stringify(this.datosForm));
-
-      console.log("Favoritos: ", this.favoritos);
-      //console.log("Recetas: ", this.datosForm);
     },
 
     mounted: function (){

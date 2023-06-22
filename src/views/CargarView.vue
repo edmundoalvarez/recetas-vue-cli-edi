@@ -6,7 +6,6 @@
   
    
   //<script>
-  //import Favoritos from "../components/Favoritos.vue";
   import FormComponent from "../components/Form.vue";
 
 
