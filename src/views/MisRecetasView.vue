@@ -61,8 +61,8 @@ h4{
 
   }
   .cat {
-    background-color: rgb(111, 84, 68);
-    color: white;
+    border: solid 1.5px rgb(111, 84, 68);
+    color: rgb(111, 84, 68);
     padding: 3px 6px;
     margin-right: 3px;
     border-radius: 30px;
