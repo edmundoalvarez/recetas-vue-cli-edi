@@ -72,5 +72,7 @@ export default {
 }
 p {
   margin: 0px !important;
+  font-size: 16px;
+  hyphens: none !important;
 }
 </style>
