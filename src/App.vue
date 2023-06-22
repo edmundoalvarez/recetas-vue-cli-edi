@@ -54,6 +54,7 @@ export default {
   name: "App",
   data: () => ({
     datosForm: [],
+    recetas: [],
     icons: ["mdi-facebook", "mdi-twitter", "mdi-instagram", "mdi-youtube", "mdi-linkedin"],
     items: [
       {
@@ -76,12 +77,12 @@ export default {
   }),
 
   mounted(){
-    fetch("https://recetasadm2023.000webhostapp.com/api/api.php")
+    fetch("https://tu-postre.000webhostapp.com/api/api.php")
     .then(response => response.json())
     .then(response => {
-      this.datosForm = response;
+      this.recetas = response;
       console.log(response);
-      localStorage.setItem("form", JSON.stringify(this.datosForm));
+      localStorage.setItem("dato", JSON.stringify(this.recetas));
     })
     .catch( err => console.log("Problemas acá: ",err));
   }
@@ -95,5 +96,6 @@ export default {
 
 .theme--light.v-footer {
   padding: 0;
+
 }
 </style>

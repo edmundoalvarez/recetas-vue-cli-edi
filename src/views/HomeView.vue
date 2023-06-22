@@ -19,14 +19,20 @@
         </v-card-actions>
       </v-card>
     </v-container>
+    <CardServerComponent></CardServerComponent>
   </div>
 </template>
 
  
 //<script>
+import CardServerComponent from "../components/CardServer.vue";
+
 
 export default {
   name: "HomeView",
+  components: { 
+      CardServerComponent
+  },
 
   data: () => ({
     items: [
