@@ -1,4 +1,4 @@
-<h1 align="left"> 🍰 Tus postres favoritas</h1>
+<h1 align="left"> 🍰 Tus postres favoritos</h1>
 
 Aplicación que le brinda al usuario la posibilidad de guardar y compartir sus recetas de postres favoritas.
 
